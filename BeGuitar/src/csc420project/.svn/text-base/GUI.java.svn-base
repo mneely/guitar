@@ -1,0 +1,434 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package csc420project;
+
+/**
+ *
+ * @author Ethan
+ */
+import chordscale.ChordFind;
+import javax.swing.*;
+import java.awt.*;
+import trackplayer.Total;
+import chordscale.ChordTab;
+
+public class GUI extends JPanel {
+
+    JTextArea note, note2, note3, fingerpos, fingerpos2, fingerpos3, percent, percent2, percent3;
+    JLabel chord, fingering, match;
+//    JTabbedPane tab = new JTabbedPane();
+    Total panel4 = new Total(895, 105);
+    fretpanel board = new fretpanel();
+    ChordTab panel1 = new ChordTab(panel4, board);
+    JTextField[] n;
+    JLabel tmpLab;
+    ChordFind cftr;
+
+    public GUI() {
+        this.setLayout(new BorderLayout());
+//        super(new GridLayout(2, 1));
+        this.setFocusable(true);
+        //fretpanel board = new fretpanel();
+
+
+
+
+        //panelA.setSize(new Dimension(100, 100));
+
+        //add guitar fretboard --Marcus
+
+
+        //added chords --Travis
+        //ChordTab panel1 = new ChordTab(panel4, board);
+
+//        tab.addTab("Chords", panel1);
+
+        //added scales --Travis
+        //ScaleTab panel2 = new ScaleTab(board);
+        //tab.addTab("Scales", panel2);
+        JPanel chordf = new JPanel();
+        chordf.setLayout(new BoxLayout(chordf, BoxLayout.Y_AXIS));
+
+        JPanel cf = new JPanel();
+        cf.setLayout(new BoxLayout(cf, BoxLayout.X_AXIS));
+        JTextField n1 = new JTextField("E");
+        n1.setEditable(true);
+        n1.setColumns(2);
+        JTextField n2 = new JTextField("A");
+        n2.setEditable(true);
+        n2.setColumns(2);
+        JTextField n3 = new JTextField("D");
+        n3.setEditable(true);
+        n3.setColumns(2);
+        JTextField n4 = new JTextField("G");
+        n4.setEditable(true);
+        n4.setColumns(2);
+        JTextField n5 = new JTextField("B");
+        n5.setEditable(true);
+        n5.setColumns(2);
+        JTextField n6 = new JTextField("E");
+        n = new JTextField[]{null, n1, n2, n3, n4, n5, n6};
+        JButton load = new JButton("load");
+        addListeners(n1, n2, load, null);
+        addListeners(n2, n3, load, n1);
+        addListeners(n3, n4, load, n2);
+        addListeners(n4, n5, load, n3);
+        addListeners(n5, n6, load, n4);
+        addListeners(n6, null, load, n5);
+        n6.setEditable(true);
+        n6.setColumns(2);
+        JPanel col = new JPanel();
+        col.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        JLabel chordLab1 = new JLabel("C Major Variation 1");
+        addListeners(chordLab1);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+
+        c.gridy = 0;
+
+        c.weightx = 2.5;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.insets = new Insets(5, 0, 0, 0);
+        col.add(chordLab1, c);
+        c.insets = new Insets(15, 0, 0, 0);
+        JLabel chordLab2 = new JLabel("B Major Variation 2");
+        addListeners(chordLab2);
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
+
+        c.anchor = GridBagConstraints.LINE_START;
+        col.add(chordLab2, c);
+        JLabel chordLab3 = new JLabel("D Major Variation 1");
+        addListeners(chordLab3);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 2;
+
+        c.anchor = GridBagConstraints.LAST_LINE_START;
+        col.add(chordLab3, c);
+        JLabel chordLab4 = new JLabel("87%");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = .5;
+        c.anchor = GridBagConstraints.FIRST_LINE_END;
+
+
+        c.gridx = 2;
+        c.gridy = 0;
+        c.insets = new Insets(5, 0, 0, 0);
+        col.add(chordLab4, c);
+        c.insets = new Insets(15, 0, 0, 0);
+        JLabel chordLab5 = new JLabel("77%");
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 2;
+        c.gridy = 1;
+
+        col.add(chordLab5, c);
+        JLabel chordLab6 = new JLabel("67%");
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 2;
+        c.gridy = 2;
+
+        col.add(chordLab6, c);
+        n1.setText("E");
+        n2.setText("A");
+        n3.setText("D");
+        n4.setText("G");
+        n5.setText("B");
+        n6.setText("E");
+        cf.add(n1);
+        cf.add(n2);
+        cf.add(n3);
+        cf.add(n4);
+        cf.add(n5);
+        cf.add(n6);
+        cf.add(load);
+
+
+
+        chordf.add(cf);
+        chordf.add(col);
+
+//        Total panel4 = new Total(900,115);
+        panel4.setChordTab(panel1);
+        panel4.displayGUI();
+        //added music player --Rich
+//        tab.addTab("Player", panel4);
+        ;
+        JSplitPane chordFind = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panel1, chordf);
+        JSplitPane testing = new JSplitPane(JSplitPane.VERTICAL_SPLIT, chordFind, panel4);
+        //chordFind.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel1.setBorder(BorderFactory.createLineBorder(Color.black));
+        chordf.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel4.setBorder(BorderFactory.createLineBorder(Color.black));
+        chordFind.setDividerLocation(600);
+        chordFind.setEnabled(false);
+        chordFind.setDividerSize(1);
+        testing.setDividerLocation(133);
+        testing.setEnabled(false);
+        testing.setDividerSize(1);
+        add(board, BorderLayout.PAGE_START);
+        add(testing, BorderLayout.CENTER);
+//        add(chordFind, BorderLayout.CENTER);
+//        add(panel4, BorderLayout.PAGE_END);
+
+//        add(tab);
+
+//        chordLab1.addMouseListener(new java.awt.event.MouseAdapter() {
+//
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//            }
+//
+//            public void mouseEntered(java.awt.event.MouseEvent evt) {
+//                 evt.getComponent().setFont(new Font("Ariel", Font.BOLD, 12));
+//                evt.getComponent().setForeground(Color.BLUE);
+//            }
+//
+//            public void mouseExited(java.awt.event.MouseEvent evt) {
+//                evt.getComponent().setFont(new Font("Ariel", Font.PLAIN, 12));
+//                evt.getComponent().setForeground(Color.BLACK);
+//            }
+//        });
+
+        cftr = new ChordFind(panel1.ch, chordLab1, chordLab2, chordLab3, chordLab4, chordLab5, chordLab6);
+        cftr.findChord(new int[]{0, 0, 0, 0, 0, 0});
+        panel1.changeDisplay("A1");
+        //cftr.findChord(new int[]{1,2,3,4,5,6});
+
+        load.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int[] arr = new int[7];
+                arr[0] = 0;
+                for (int i = 1; i < 7; i++) {
+                    try {
+                        arr[i] = Integer.parseInt(n[i].getText());
+                        if (arr[i] > 9) {
+                            arr[i] = 0;
+                        }
+                    } catch (Exception e) {
+                        arr[i] = 0;
+                    }
+                }
+                panel1.changeChord(arr);
+                int[] tmp = new int[6];
+                for (int t = 0; t < 6; t++) {
+                    tmp[t] = arr[t + 1];
+                }
+                cftr.findChord(tmp);
+            }
+        });
+        load.addFocusListener(new java.awt.event.FocusAdapter() {
+
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                int[] arr = new int[7];
+                arr[0] = 0;
+                for (int i = 1; i < 7; i++) {
+                    try {
+                        arr[i] = Integer.parseInt(n[i].getText());
+                        if (arr[i] > 9) {
+                            arr[i] = 0;
+                        }
+                    } catch (Exception e) {
+                        arr[i] = 0;
+                    }
+                }
+                panel1.changeChord(arr);
+                int[] tmp = new int[6];
+                for (int t = 0; t < 6; t++) {
+                    tmp[t] = arr[t + 1];
+                }
+                cftr.findChord(tmp);
+
+            }
+        });
+
+    }
+
+    public void addListeners(JTextField jf, JTextField jf2, JButton jb, JTextField jf3) {
+        final JTextField tmpField = jf;
+        final JTextField tmpField2 = jf2;
+        final JTextField tmpField3 = jf3;
+        final JButton tmpjb = jb;
+        jf.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tmpField.selectAll();
+            }
+        });
+        jf.addKeyListener(new java.awt.event.KeyAdapter() {
+
+
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                //System.out.println(evt.toString());
+              /*  if (Character.toString(evt.getKeyChar()).equals("0") || Character.toString(evt.getKeyChar()).equals("1") || Character.toString(evt.getKeyChar()).equals("2") || Character.toString(evt.getKeyChar()).equals("3") || Character.toString(evt.getKeyChar()).equals("4") || Character.toString(evt.getKeyChar()).equals("5") || Character.toString(evt.getKeyChar()).equals("6") || Character.toString(evt.getKeyChar()).equals("7") || Character.toString(evt.getKeyChar()).equals("8") || Character.toString(evt.getKeyChar()).equals("9")) {
+                    if (tmpField2 == null) {
+                        tmpjb.requestFocus();
+                    } else {
+                        tmpField2.requestFocus();
+//                    tmpField2.getCursor();
+                        //tmpField2.set
+//                    tmpField2.setCaretPosition(1);
+                        tmpField2.selectAll();
+                    }
+                    evt.getKeyChar();
+                    System.out.println(evt.getKeyCode());
+                } else if (true) {
+
+                }*/
+                if (evt.getKeyCode() == 39) {//key pressed was right arrow
+                    if (tmpField2 != null) tmpField2.requestFocus();
+                    tmpField2.selectAll();
+                } else if (evt.getKeyCode() == 37) {//left arrow pressed
+                    if (tmpField3 != null) tmpField3.requestFocus();
+                    System.out.println(tmpField3.getText());
+                    tmpField3.selectAll();
+                }
+                //System.out.println(evt.getKeyCode());
+//                if (tmpField2 == null) {
+//                    tmpjb.requestFocus();
+//                } else {
+//                    tmpField2.requestFocus();
+////                    tmpField2.getCursor();
+//                    //tmpField2.set
+////                    tmpField2.setCaretPosition(1);
+//                    tmpField2.selectAll();
+//                }
+
+
+//                if (evt.KEY_PRESSED == 401) {
+//
+//                }
+            }
+
+
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                //System.out.println(evt.toString());
+                if (Character.toString(evt.getKeyChar()).equals("0") || Character.toString(evt.getKeyChar()).equals("1") || Character.toString(evt.getKeyChar()).equals("2") || Character.toString(evt.getKeyChar()).equals("3") || Character.toString(evt.getKeyChar()).equals("4") || Character.toString(evt.getKeyChar()).equals("5") || Character.toString(evt.getKeyChar()).equals("6") || Character.toString(evt.getKeyChar()).equals("7") || Character.toString(evt.getKeyChar()).equals("8") || Character.toString(evt.getKeyChar()).equals("9")) {
+                    if (tmpField2 == null) {
+                        tmpjb.requestFocus();
+                    } else {
+                        tmpField2.requestFocus();
+//                    tmpField2.getCursor();
+                        //tmpField2.set
+//                    tmpField2.setCaretPosition(1);
+                        tmpField2.selectAll();
+                    }
+                    evt.getKeyChar();
+                    System.out.println(evt.getKeyCode());
+                } else if (true) {
+
+                }
+//                if (tmpField2 == null) {
+//                    tmpjb.requestFocus();
+//                } else {
+//                    tmpField2.requestFocus();
+////                    tmpField2.getCursor();
+//                    //tmpField2.set
+////                    tmpField2.setCaretPosition(1);
+//                    tmpField2.selectAll();
+//                }
+
+
+//                if (evt.KEY_PRESSED == 401) {
+//
+//                }
+            }
+
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                int[] arr = new int[7];
+                arr[0] = 0;
+                for (int i = 1; i < 7; i++) {
+                    try {
+                        arr[i] = Integer.parseInt(n[i].getText());
+                        //System.out.println(n[i].getText());
+                        if (arr[i] > 9) {
+                            arr[i] = 0;
+                        }
+                    } catch (Exception e) {
+                        arr[i] = 0;
+                    }
+                }
+                panel1.changeChord(arr);
+                int[] tmp = new int[6];
+                for (int t = 0; t < 6; t++) {
+                    tmp[t] = arr[t + 1];
+                }
+                cftr.findChord(tmp);
+            }
+        });
+    }
+
+    public void addListeners(JLabel jb) {
+        final JLabel tmpLab2 = jb;
+        jb.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ////////////////////////////////////////////////
+                //this cod is for the button
+//                int[] arr = new int[7];
+//                arr[0] = 0;
+//                for (int i = 1; i < 7; i++) {
+//                    try {
+//                        arr[i] = Integer.parseInt(n[i].getText());
+//                    } catch (Exception e) {
+//                        arr[i] = 0;
+//                    }
+//                }
+//                panel1.changeChord(arr);
+
+                String tmp;
+                if (tmpLab2.getText().contains("Major")) {
+                    tmp = Character.toString(tmpLab2.getText().charAt(0))
+                            + Character.toString(tmpLab2.getText().charAt(18));
+                } else {
+                    tmp = Character.toString(tmpLab2.getText().charAt(0))
+                            + Character.toString(tmpLab2.getText().charAt(2))
+                            + Character.toString(tmpLab2.getText().charAt(18));
+                }
+                panel1.changeDisplay(tmp);
+
+            }
+
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                evt.getComponent().setForeground(Color.RED);
+            }
+
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                evt.getComponent().setForeground(Color.BLUE);
+            }
+
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                evt.getComponent().setFont(new Font("Ariel", Font.BOLD, 12));
+                evt.getComponent().setForeground(Color.BLUE);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                evt.getComponent().setFont(new Font("Ariel", Font.PLAIN, 12));
+                evt.getComponent().setForeground(Color.BLACK);
+            }
+        });
+
+    }
+
+    public static void createandshowGUI() {
+
+        JFrame f = new JFrame("Chordbook");
+        f.setIconImage(new ImageIcon("Guitar.png").getImage());
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Menu myMenu = new Menu();
+        f.setJMenuBar(myMenu);
+        f.setResizable(false);
+        f.add(new GUI(), BorderLayout.CENTER);
+        f.pack();
+        //f.setSize(900, 500);
+        f.setSize(890, 465);
+        f.setVisible(true);
+    }
+}

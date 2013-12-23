@@ -1,0 +1,15 @@
+trackplayer.VolImage
+trackplayer.B$2
+trackplayer.TotalRight
+trackplayer.B$3
+trackplayer.Vol
+trackplayer.B$1
+trackplayer.Bottom
+trackplayer.DeleteButton
+trackplayer.B
+trackplayer.Buttons
+trackplayer.DeleteButton$1
+trackplayer.Total
+trackplayer.ButtonGroup
+trackplayer.Right
+trackplayer.Bottom$1

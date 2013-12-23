@@ -1,0 +1,93 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 14
+/svn/!svn/act/
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/50/trunk/BeGuitar
+END
+control_repeat.png
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/27/trunk/BeGuitar/control_repeat.png
+END
+repeat.png
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/27/trunk/BeGuitar/repeat.png
+END
+delete.png
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/27/trunk/BeGuitar/delete.png
+END
+manifest.mf
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/3/trunk/BeGuitar/manifest.mf
+END
+box.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/11/trunk/BeGuitar/box.jpg
+END
+stop.png
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/27/trunk/BeGuitar/stop.png
+END
+control_play.png
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/33/trunk/BeGuitar/control_play.png
+END
+play.png
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/27/trunk/BeGuitar/play.png
+END
+sound_none.png
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/27/trunk/BeGuitar/sound_none.png
+END
+guitarneck.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/11/trunk/BeGuitar/guitarneck.jpg
+END
+sound.png
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/27/trunk/BeGuitar/sound.png
+END
+dbox.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/40/trunk/BeGuitar/dbox.jpg
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/3/trunk/BeGuitar/build.xml
+END
+guitar.png
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/48/trunk/BeGuitar/guitar.png
+END

@@ -1,0 +1,97 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package csc420project;
+
+/**
+ *
+ * @author Ethan
+ */
+import javax.swing.*;
+import java.awt.*;
+import trackplayer.Total;
+import chordscale.ChordTab;
+import chordscale.ScaleTab;
+
+public class GUI extends JPanel {
+
+    JTextArea note, note2, note3, fingerpos, fingerpos2, fingerpos3, percent, percent2, percent3;
+    JLabel chord, fingering, match;
+
+    public GUI() {
+        super(new GridLayout(2, 1));
+
+fretPanel board = new fretPanel();
+        board.setSize(new Dimension(100,100));
+        //panelA.setSize(new Dimension(100, 100));
+
+        //add guitar fretboard --Marcus
+
+
+
+
+        JTabbedPane tab = new JTabbedPane();
+
+
+        //added chords --Travis
+        ChordTab panel1 = new ChordTab();
+        tab.addTab("Chords", panel1);
+
+        //added scales --Travis
+        ScaleTab panel2 = new ScaleTab();
+        tab.addTab("Scales", panel2);
+
+
+
+
+
+        JComponent panel3 = new JPanel();
+        panel3.setLayout(new GridLayout(4, 3));
+        chord = new JLabel("Chord");
+        panel3.add(chord);
+        fingering = new JLabel("Fingering");
+        panel3.add(fingering);
+        match = new JLabel("%match");
+        panel3.add(match);
+        note = new JTextArea("C");
+//        note.setBorder(new LineBorder(LineBorder()));
+        panel3.add(note);
+        fingerpos = new JTextArea("001321");
+        panel3.add(fingerpos);
+        percent = new JTextArea("84%");
+        panel3.add(percent);
+        note2 = new JTextArea("D");
+        panel3.add(note2);
+        fingerpos2 = new JTextArea("103221");
+        panel3.add(fingerpos2);
+        percent2 = new JTextArea("56%");
+        panel3.add(percent2);
+        note3 = new JTextArea("Eb");
+        panel3.add(note3);
+        fingerpos3 = new JTextArea("320011");
+        panel3.add(fingerpos3);
+        percent3 = new JTextArea("72%");
+        panel3.add(percent3);
+        tab.addTab("Chordfinder", panel3);
+
+        Total panel4 = new Total(900,175);
+        panel4.displayGUI();
+        //added music player --Rich
+        tab.addTab("Player", panel4);
+        add(board);
+        add(tab);
+    }
+
+    public static void createandshowGUI() {
+
+        JFrame f = new JFrame("Chordbook");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(false);
+        f.add(new GUI(), BorderLayout.CENTER);
+        f.pack();
+        f.setSize(900, 500);
+        f.setVisible(true);
+    }
+}
